@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall de la Fama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript"> emailjs.init('7srjC1uhHZCJcAv9E')</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(''); /* Fondo de pantalla */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-color: rgba(240, 240, 240, 0.8); 
+            scroll-behavior: smooth; 
+        }
+        
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 2%;
+            text-align: center;
+            transition: background-color 0.3s ease; 
+            align-items: center;
+        }
+        
+        header:hover {
+            background-color: rgba(85, 85, 85, 0.8); 
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 2%;
+            transition: transform 0.3s ease; 
+        }
+        
+        nav ul li:hover {
+            transform: scale(1.1); 
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease; 
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700; 
+        }
+        
+        main {
+            padding: 2%;
+        }
+        
+        section {
+            margin-bottom: 3%;
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px;
+            padding: 2%;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease; 
+        }
+        
+        section:hover {
+            transform: translateY(-5px); 
+        }
+        
+        section h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1%;
+            margin-bottom: 2%;
+        }
+        
+        section p {
+            color: #555;
+        }
+        
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); 
+            color: #fff;
+            text-align: center;
+            padding: 1%;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+        }
+
+        #logo {
+            flex: 1;
+            text-align: center;
+            position: absolute;
+        }
+
+        #logo img {
+            width: auto;
+            height: 100px;
+        }
+
+        .logo-equipo {
+                flex: 1;
+                text-align: center;
+            }
+    
+        .logo-equipo img {
+            width: auto;/* Ajusta el tamaño máximo de los logos según sea necesario */
+            height: 220px;
+            object-fit: cover;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Colapsar los bordes de las celdas */
+        }
+
+        th, td {
+            border: 1px solid black; /* Borde de 1px sólido negro */
+            padding: 8px; /* Espaciado interno de las celdas */
+            text-align: center; /* Alineación centrada del texto */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Fondo gris claro para los encabezados */
+        }
+
+        @keyframes firework {
+            0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+            50% { width: 0.5vmin; opacity: 1; }
+            100% { width: var(--finalSize); opacity: 0; }
+        }
+
+        /* @keyframes fireworkPseudo {
+        0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
+        50% { width: 0.5vmin; opacity: 1; }
+        100% { width: var(--finalSize); opacity: 0; }
+        }
+        */
+
+        .firework,
+        .firework::before,
+        .firework::after
+        {
+            --initialSize: 0.5vmin;
+            --finalSize: 45vmin;
+            --particleSize: 0.2vmin;
+            --color1: yellow;
+            --color2: khaki;
+            --color3: white;
+            --color4: lime;
+            --color5: gold;
+            --color6: mediumseagreen;
+            --y: -30vmin;
+            --x: -50%;
+            --initialY: 60vmin;
+            content: "";
+            animation: firework 2s infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, var(--y));
+            width: var(--initialSize);
+            aspect-ratio: 1;
+            background: 
+
+            /*
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,    
+            */
+    
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+            radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+            radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+            radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+    
+            /* bottom right */
+            radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+            radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+            radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+            radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+            radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+    
+            /* bottom left */
+            radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+            radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+            radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+            radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+            radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+            radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+
+            /* top left */
+            radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+            radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+            radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+            radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+            radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+            radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+    
+            /* top right */
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+            radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%
+            ;
+            background-size: var(--initialSize) var(--initialSize);
+            background-repeat: no-repeat;
+        }
+
+        .firework::before {
+            --x: -50%;
+            --y: -50%;
+            --initialY: -50%;
+            /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
+            transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+            /*   animation: fireworkPseudo 2s infinite; */
+        }
+
+
+        .firework::after {
+            --x: -50%;
+            --y: -50%;
+            --initialY: -50%;
+            /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
+            transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+            /*   animation: fireworkPseudo 2s infinite; */
+        }
+
+        .firework:nth-child(2) {
+            --x: 30vmin;
+        }
+
+
+        .firework:nth-child(2),
+        .firework:nth-child(2)::before,
+        .firework:nth-child(2)::after {
+            --color1: pink;
+            --color2: violet;
+            --color3: fuchsia;
+            --color4: orchid;
+            --color5: plum;
+            --color6: lavender;  
+            --finalSize: 40vmin;                        
+            left: 30%;
+            top: 60%;
+            animation-delay: -0.25s;
+        }
+
+        .firework:nth-child(3) {
+            --x: -30vmin;
+            --y: -50vmin;
+        }
+
+        .firework:nth-child(3),
+        .firework:nth-child(3)::before,
+        .firework:nth-child(3)::after {
+            --color1: cyan;
+            --color2: lightcyan;
+            --color3: lightblue;
+            --color4: PaleTurquoise;
+            --color5: SkyBlue;
+            --color6: lavender;
+            --finalSize: 35vmin;
+            left: 70%;
+            top: 60%;
+            animation-delay: -0.4s;
+        }
+
+        @media (max-width: 720px) {
+            #logo {
+                flex: 1;
+                text-align: center;
+                position: absolute;
+            }
+
+            #logo img {
+                width: auto;
+                height: 70px;
+            }
+        }
+
+        @media (min-width: 721px) and (max-width: 1200px) {
+            #logo {
+                flex: 1;
+                text-align: center;
+                position: absolute;
+            }
+
+            #logo img {
+                width: auto;
+                height: 100px;
+            }
+        }
+
+        @media (min-width: 1201) {
+            #logo {
+                flex: 1;
+                text-align: center;
+                position: absolute;
+            }
+
+            #logo img {
+                width: auto;
+                height: 100px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="Logo Hall de la Fama" id="logo">
+        </div>    
+        <div>
+            <h1>Hall de la Fama</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hall de la Fama</a></li>
+                    <li><a href="index1.html">TOdD</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="apuesta">
+            <h2>Liga: Primera División</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiTNUqVhPiK_6AEzHR-cPS5Ua3xENbfbuZXVtnQM4Qwx0qCyBH6Z3NeUMRLfkojGUZR6g56jlsF6c_aYgmZuTOFYr5fN3XUE-epZPVri9Tr3NkfqEXG73ml2t5uDWvTXV8ndyOC8BSLFfXMWmFtDiSTzWyqFCqzLWkJjqAHFjQTNyVW4lAGEke1h6iQbrbW" alt="LHP1ra">
+            </div>
+            <a href="index2.html">Primera Temporada</a><br>
+            <a href="index3.html">Segunda Temporada</a><br>
+            <a href="index4.html">Tercera Temporada</a><br>
+            <a href="index5.html">Cuarta Temporada</a><br>
+            <a href="index6.html">Quinta Temporada</a><br>
+            <a href="index7.html">Sexta Temporada</a><br>
+            <a href="index8.html">Septima Temporada</a><br>
+            <a href="index9.html">Octava Temporada</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Liga: Segunda División</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEj78UtMe4igQ7FwBtw0ri9lyx80ezYIXYC5jUZBQ_JuuAfzqJ0Prr_MaeIH4stN9GsdHB1BMz7GisVizHTnn-_52C0bdm0k70WiO6JgV_-SdQcj_X3fto53DWcomcP99IM5dRSqEFUqACI0if77HKsEhvM4YfZZWgor2682FTaITfEDRc21yNUY-a-icux3" alt="LHP2da">
+            </div>
+            <a href="index61.html">Quinta Temporada</a><br>
+            <a href="index71.html">Sexta Temporada</a><br>
+            <a href="index81.html">Septima Temporada</a><br>
+            <a href="index91.html">Octava Temporada</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Little Cup</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHPLC">
+            </div>
+            <a href="index10.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Rey de los Mancos</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgKpazQNvQlx9RzSn8ewqmhFZib9Mg6VVtWNMMPjelU8FZUqu7XYCH5FBRWu8iFGNa-lU_oK3EhJq8wAhNeRzUOH6f6pWksgI5QlmAfMII2tUWNtu9q44fBJxbQaoLAIVlYV_eM8N27zE0XQqZlxZfoV9udwGRmGUrOaQFKxNLFclek-PqzRdyGKhc_1h2m" alt="LHPRey">
+            </div>
+            <a href="index11.html">I - V</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Conferencia de Alola</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjjjViK8J7UnYPUSnRiY6RiYoiT8_48-Tk7t-VYzI_FQ_xKECiWcxPjQTV-DGnhD3vasV7YGk7YKa-RR2AKPDIjGdPIqLzUTVpUCA7T3WugOnDERGy_sPYCpdokGXJ0dvS6NkfICTeK5dSm-qYfiHxhu5DEtPhkB7PvcsDHL25L3VdpuPIqtKltTmo61rxp" alt="LHPCon">
+            </div>
+            <a href="index12.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Doubles Tour</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index13.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Butter-prix</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index14.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa Retro</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjRtIUDoYOrkDRoGAFGLx9h9ICmWB6B7Hb1ekZjpN8bMLHz_6PzoB2Rt4sFUkuSwhOjo-yZxUxNH1rLhaVbR4a0n0g-g3CVcZcn5FN-WA90PD8pNbvITeYHviJUDIevSZlJSDCSrK4NFjFc6qTVInctqnYrLu80f-dWlN4A6WHAj0hNTrG0w5rzx0IHwZ8A" alt="LHPRetro">
+            </div>
+            <a href="index15.html">Copa Retro</a><br>
+            <a href="index16.html">Copa Retro II</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa de Leyendas</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgd1IKZHcQmPzox31jHUgTHMNlwlBgGCc7tmOpC0LIU8pYZUdp4LZoM6YXFVwethCkOjJcIQflTacrnd-B4emxiczhfMlRZgaGI2tcXvhiEHfLOeHeOTDzkDLf5rD22sZ_8On1kerXG43Qh5eYCySyLXS3HbnwIGZm5Hf5TrSKdeBD6kThXpPfucJrth08w" alt="LHPLeyendas">
+            </div>
+            <a href="index17.html">Copa de Leyendas</a><br>
+            <a href="index18.html">Copa de Leyendas II</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Midseason Monotype</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhmd85AXcTCiVgDewF4dh6wgHqkWap7erkndZsdEqcEWZ1ID-YQRn3BQhZ1YXrXOsNPvLhGVLJ4Bp9LLaDsuO42VaUa3uUXkvA-uvKxDdwOC8tbvx_IXguOXjplgRTtfjXOar0PwzZ79AR4E6eLt373cA5p-iNYBAACGEYk8BOxXA6TcyiIy6Pur-9eatuI" alt="LHPMid">
+            </div>
+            <a href="index19.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Torneo Relámpago</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgcGDn7iL4Z3wu9TqJ2u4BedB4fbE6z6bgRFVamuBVS2m83239VhSIpDMANvYBWH2eyE7v_Q9yeqqAm3n5Vbyaivd5b2l1MJuklZ-YMeQCm0aGqlLkddaocN49fIbldLio6-iqpgnWb_v21AhnH41yrA0__MVC9iLMkkGSiWalhNdnNaQUHdxyuErrHfpS5" alt="LHPRelampago">
+            </div>
+            <a href="index20.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa Avatar</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEixKpa6EDQByiq54gjDgInqiDbKNouRchE5amXL185Vk95WG97K4qNyViSNSf_kcYjfxTGxHSPIcoRImUHDbTnsRGG0FxHnTuWZxvjnHdhZZoZlullHpczZUyxbgRGrUckZVMkQbfESk6XQic-e9ktRudp03nEvGN87YZueatu-hgFJ0qRbzKEkhVrS81I_" alt="LHPAvatar">
+            </div>
+            <a href="index21.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Midseason OU</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgxosjJDPPz74TPoCuGtftaT--P_Z6w1H9OXaTl5mjtFYafSbbMoxf4g0uEtXJYEByXH_LH_7f4eBDiJt0Bq6HsPehQfHMbYCx27-awXcjM2rrG9t8c-0AI8q6nipGV69C8bc9fhyj5a-VK5NOW4CeP7-_V6thjSj8vThOCiBQGV1-LBW5EbEXfbEmdq6w6" alt="LHPMidOU">
+            </div>
+            <a href="index22.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>STAB'em All</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index23.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Master Cup</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index24.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Roleplay Tour: Master Class</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index25.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa Duos</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index26.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa Unitipo</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index27.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa Fusión</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEikMazezRHjI64weQoX9O4HSaXMtaYG3bWi27P-UFRSigqyKPwzm_n2T0X61pXAMyy2-H_ipR1kUPNtSoM6hNgNKxSZjWHPtfYLPd-GCsg606s63Q0-KF95v2QiwvpB47txe4LD5__VVmJ2sXWQnydNKJV5LXDXpdt4WPZhDiBC4xWQycM3j3RpYLes3E5s" alt="LHP">
+            </div>
+            <a href="index28.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Fortune Cup</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjU4jybJv0_J_EoK4VaRHbIK1IRJw9Epy1l501RagWemTxyo9kcvCBeGPLnGWokHdjzkkxaUf1OdSJE8cVj--LS46VuH7HuhxAseBv0SfV8kl0htI0sl35V4Agyocp8FH-hniAxkMYR397NKKeZ9TD4q-p-v5GLAI_b59Y7V7xICrMkodJH2O2xl0QrGCj_" alt="LHPFortune">
+            </div>
+            <a href="index29.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Guerra de Regiones</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhnYx8UCHlgbvftyXz3rcP-Km5m14_qbf6aJNEVYXm3LJbq9fP8-5sDyRbwVdmgXr1wqC9x2Fwu093ggkHDQBI2l0w4VGvyF69n8KEGNvJJdIplFHJMyGh4QZXp8HImFTYijbn64ABVamT0SEyhbJ4aXGOAe7zXQo1gYwD8_Q-pDtYsBKckDHjsBtwaSkmW" alt="LHPGuerra">
+            </div>
+            <a href="index30.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Conferencia de Paldea</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi_fBUATn8oDD9Qf1ahahk9rHKysO0sKpwyqjNoo1Vvs9GpXvPgh9gm5dK9vnqz1aLOTahr6dXy_7feS6VfOpdcHVzVN82JGX8pJEx2wFLw2BImiUjX0Sfh8NhmuuKKvkbsKwA6YTqIWScFiE10VVPbY9fxDwC5c-iym4O0wa1KAldJOFlVDYhMqmzB_26X" alt="LHPCon">
+            </div>
+            <a href="index31.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Rey del Cartón</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiE0NNuLRORjQwVmCWK9PHV4qRCbtVgAjyzE9ZKmgsm6DoykkZ0wPtc1ms6cdvYsh4Q1BJi7r3cS3eQsNUGLLun2Nk__ViMZdweDLJksynu8QumuRuw0Ei9ZahKMhbh9gfuUTq91vzXi9kU2b7jhTFqYH2D3IbJLH0QriOpT8KHmbNi-58HfvOvBMO16Sba" alt="LHPCartón">
+            </div>
+            <a href="index32.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Circuito de campeones</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjmJGokaW8wUsWyohaqzEPQ2aPc30vE6ACswsotp-Ox2n0jk8i2AakmllxqpeRyc6noFr-zxL66n7hp1RHDTLzSLY6ypFtGeNLbAmR1ZzsLo4CYRjaZc3JQZRgl1NV7-hSdmIrkzxANASf1WV-FrpFLrgv_mK1dUHDLHk09_g9bR0Eyzk9a7lPvteONvbqG" alt="LHPUnite">
+            </div>
+            <a href="index33.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Torneo Oficial de Dobles</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgsAFM6z1aj9L4AvQxuDbdKi_C-xAdOkkwIl_2OpCkldytUUT0odqnWf_5YXop0ePFhVe-RoJfqNOrezAi6v8bKFyrJGIu6GpTt9bftUYicVeH7EvmZMPYr9RuXHS6e3xJFi-ARQF-eFLnMPlQqtVbDDnJt4abDpiXE1zL28AEh6QeORJ9F7JDp1Gx_Hgww" alt="LHPTOdD">
+            </div>
+            <a href="index1.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Frente de Batalla</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjw3OIdjJOrE-07ayVU6kKMrMXmQXbtEPuGgAFPqGRzIu5VsfZBywlN-yag1vksBcBD5EYlPsfv02AJuemBQHzQw00VAEz-8EdYH8dwQVr-_SIRMarpbExDX-aaXnx42K1FGV5RMGUUv0KxXhDzHvzm0qO-zxcP-WleCwsEcANFQx6_CLTR5V0WuzQai3nX" alt="LHPFrente">
+            </div>
+            <a href="index34.html">Podio</a><br>
+        </section>
+        <section>
+            <h2>Pokejuegos del hambre</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhW3PhvlR1HYLoydaBAnOXW3Msy7WjaZmeYel74trrSG64lQGQE-1GIVVNNwB0Gqw7Aoj8fPpG2psXiQeHnCm-ZW0F6WtJm9Q0IQEJLkVFr1Yf1Bh3xYkp5WrGYfsRRRHw33GMvSMHvpZgI-PU1eMIQuq6vZMjcke-rJ_sm1JpBYKMit34GdG_H_FjFsy8p" alt="Pokejuegos">
+            </div>
+            <a href="index35.html">Podio</a><br>
+        </section>
+        <section id="apuesta">
+            <h2>Copa de las casas</h2>
+            <div class="logo-equipo">
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiRlKZKEFmi_0SExJIZ4sBKNI_SRmQwbLkBGDzjdoutENDMD1kiiqDxD8QYnuMotOVODwpYYD3zSYobgXleOzv81zqFc5w3lHP3hXUBp8Bh9E8rZBS-U6cLoGnzPzpC8JmonqQldjh6I-jo8b1ByeQuWeGGf9sRfagXPGTQiEPqseTq4uJs5wWB6u7bVebD" alt="LHPCasas">
+            </div>
+            <a href="index36.html">I - V</a><br>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Derechos de autor © 2024 Mi Página Web. Todos los derechos reservados.</p><br>
+        <p>Únete al grupo en: <a href="https://www.facebook.com/groups/1765381460409727/?ref=share&mibextid=NSMWBT"><i class="fab fa-facebook"></i></a></p>
+    </footer>
+
+</body>
+</html>
